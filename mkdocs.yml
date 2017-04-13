@@ -1,0 +1,23 @@
+# 网站名称
+site_name: 规范
+
+# 网站页面
+pages:
+  - 主页: 'index.md'
+  - 前端: 
+    - '前言': 'front-end/introduction.md'
+    - '一般规范': 'front-end/general-style-rules.md'
+    - 'HTML规范': 'front-end/HTML-style-rules.md'
+    - 'CSS规范': 'front-end/CSS-style-rules.md'
+    - 'JavaScript规范': 'front-end/JavsScript-style-rules.md'
+  - 后端:
+    - 'C#规范': 'back-end/Csharp-style-rules.md'
+    - 'JAVA规范': 'back-end/JAVA-style-rules.md'
+  - 关于: 
+    - 'Readme': 'about/readme.md'
+    - '维护声明': 'about/statement.md'
+
+site_dir: '../site/'
+theme: readthedocs
+
+
