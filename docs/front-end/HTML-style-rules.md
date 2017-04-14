@@ -16,6 +16,8 @@ HTML5是下一代HTML，请务必了解。
 
 [https://github.com/gionkunz/chartist-js/blob/develop/CODINGSTYLE.md](https://github.com/gionkunz/chartist-js/blob/develop/CODINGSTYLE.md)
 
+[http://blog.csdn.net/qianliwind/article/details/51623065](http://blog.csdn.net/qianliwind/article/details/51623065)
+
 ## 语法
 
 - 请用四个**空格**代替Tab(soft tabs)
@@ -55,7 +57,35 @@ HTML5是下一代HTML，请务必了解。
         </tr>
     </tbody>
 </table>
+```
 
+
+
+## 嵌套原则
+
+HTML标签包括**块状元素(block)**、**内联元素（inline）**
+
+块状元素一般用来搭建网站架构、布局、承载内容等
+
+内联元素一般用在网站内容之中的某些细节或部位，用以“强调、区分样式、上标、下标、锚点”等等
+
+- 块元素可以包含内联元素或者块状元素，但是内联元素**不能**包含块状元素。
+``` html
+<div><h1></h1><p></p></div>  对
+<a href=”#”><span></span></a> 对
+<span><div></div></span> 错
+```
+- 块状元素不能放在`<p>`里面。
+- 下面的特殊块状元素只能包含内联元素，**不能**再包含块状元素，分别是：`h1`、`h2`、`h3`、`h4`、`h5`、`h6`、`p`、`dt`。
+- `li`内可以包含`div`,`li` 和 `div` 标 签都是装载内容的容器，地位平等，没有级别之分。
+- 块级元素与块级元素并列、内嵌元素与内嵌元素并列：
+
+``` html
+推荐
+<div><h2></h2><p></p></div>
+<div><a href=”#”></a><span></span></div>
+不推荐
+<div><h2></h2><span></span></div>
 ```
 
 
