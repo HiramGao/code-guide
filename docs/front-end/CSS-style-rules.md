@@ -1,21 +1,32 @@
-# CSS
+# CSS（BETA）
+
+## 写在前面的话
+
+阅读此规范前，请保证你已经熟悉CSS基本应用，如果没有推荐下面网站
+
+[https://developer.mozilla.org/zh-CN/docs/Web/CSS](https://developer.mozilla.org/zh-CN/docs/Web/CSS)
+
+[http://www.w3school.com.cn/css/](http://www.w3school.com.cn/css/)
+
+CSS3 是最新的 CSS 标准。请务必了解。
+
+**本文应用来源：**
+
+[http://codeguide.bootcss.com/](http://codeguide.bootcss.com/)
+
+[https://github.com/gionkunz/chartist-js/blob/develop/CODINGSTYLE.md](https://github.com/gionkunz/chartist-js/blob/develop/CODINGSTYLE.md)
+
+[http://www.cnblogs.com/y-lin/p/5753302.html](http://www.cnblogs.com/y-lin/p/5753302.html)
 
 ## 语法
 
-- 请用两个**空格**代替Tab
-- 为选择器分组时，将单独的选择器单独放一行
+- 文件编码使用无BOM得UTF-8
+- 请用四个**空格**代替Tab
 - 为了代码的易读性，在每个声明块的左花括号前添加一个空格。
 - 声明块的右花括号应当单独成行。
 - 每条声明语句的 `:` 后应该插入一个空格。
 - 为了获得更准确的错误报告，每条声明都应该独占一行。
 - 所有声明语句都应当以分号结尾。
-- 对于以逗号分隔的属性值，每个逗号后面都应该插入一个空格（例如，`box-shadow`）。
-- 不要在 `rgb()`、`rgba()`、`hsl()`、`hsla()` 或 `rect()` 值的*内部*的逗号后面插入空格。
-- 对于属性值或颜色参数，省略小于 1 的小数前面的 0 （例如，`.5` 代替 `0.5`；`-.5px` 代替 `-0.5px`）。
-- 十六进制值应该全部小写，例如，`#fff`。
-- 尽量使用简写形式的十六进制值，例如，用 `#fff` 代替 `#ffffff`。
-- 为选择器中的属性添加双引号，例如，`input[type="text"]`。
-- 避免为 0 值指定单位，例如，用 `margin: 0;` 代替 `margin: 0px;`。
 - 规则之间始终有一个空行（双换行符）分隔。
 
 ```css
@@ -24,6 +35,7 @@
   padding:15px;
   margin:0px 0px 15px;
   background-color:rgba(0, 0, 0, 0.5);
+  font-family: 'Microsoft YaHei', sans-serif;
   box-shadow:0px 1px 2px #CCC,inset 0 1px 0 #FFFFFF
 }
 
@@ -34,9 +46,32 @@
   padding: 15px;
   margin-bottom: 15px;
   background-color: rgba(0,0,0,.5);
+  font-family: "Microsoft YaHei", sans-serif;
   box-shadow: 0 1px 2px #ccc, inset 0 1px 0 #fff;
 }
 ```
+
+## 选择器
+
+为选择器分组时，将单独的选择器单独放一行。
+
+```css
+.selector,
+.selector-secondary,
+.selector[type="text"] {
+	...
+}
+```
+
+`>`,`+`,`~`选择器两边保留一个空格。
+
+``` css
+.main > nav{
+  ...
+}
+```
+
+为选择器中的属性添加双引号，例如，`input[type="text"]`。
 
 ## 合理的避免使用ID
 
@@ -68,6 +103,111 @@ div.content > header.content-header > h2.title {  font-size: 2em;}
 ```
 .content > .content-header > .title {  font-size: 2em;}
 ```
+
+## 值和单位
+
+- 文本内容必须用双引号包围。
+- 对于属性值或颜色参数，省略小于 1 的小数前面的 0 （例如，`.5` 代替 `0.5`；`-.5px` 代替 `-0.5px`）。
+- `url()` 函数中的路径不加引号。
+- 十六进制值应该全部小写，例如，`#fff`。
+- 尽量使用简写形式的十六进制值，例如，用 `#fff` 代替 `#ffffff`。
+- 避免为 0 值指定单位，例如，用 `margin: 0;` 代替 `margin: 0px;`。
+- 不要在 `rgb()`、`rgba()`、`hsl()`、`hsla()` 或 `rect()` 值的内部的逗号后面插入空格。
+- 颜色值不允许使用命名色值。不推荐`color: lightgreen;`
+- 对于以逗号分隔的属性值，每个逗号后面都应该插入一个空格（例如，`box-shadow`）。
+
+## 文本编排
+
+### 字体族
+
+`font-family` 属性中的字体族名称应使用字体的英文 `Family Name`，其中如有空格，须放置在引号中。
+
+常见字体名称如下：
+
+| 字体        | 操作系统    | Family Name         |
+| --------- | ------- | ------------------- |
+| 宋体 (中易宋体) | Windows | SimSun              |
+| 黑体 (中易黑体) | Windows | SimHei              |
+| 微软雅黑      | Windows | Microsoft YaHei     |
+| 微软正黑      | Windows | Microsoft JhengHei  |
+| 华文黑体      | Mac/iOS | STHeiti             |
+| 冬青黑体      | Mac/iOS | Hiragino Sans GB    |
+| 文泉驿正黑     | Linux   | WenQuanYi Zen Hei   |
+| 文泉驿微米黑    | Linux   | WenQuanYi Micro Hei |
+
+ `font-family` 按「西文字体在前、中文字体在后」、「效果佳 (质量高/更能满足需求) 的字体在前、效果一般的字体在后」的顺序编写，最后必须指定一个通用字体族( `serif` / `sans-serif` )
+
+``` css
+h1 {
+    font-family: "Helvetica Neue", Arial, "Hiragino Sans GB", "WenQuanYi Micro Hei", "Microsoft YaHei", sans-serif;
+}
+```
+
+`font-family` 不区分大小写，但在同一个项目中，同样的 `Family Name` 大小写必须统一。下列写法是**不**允许的。
+
+``` css
+/*错误*/
+body {
+    font-family: arial, sans-serif;
+}
+
+h1 {
+    font-family: Arial, "Microsoft YaHei", sans-serif;
+}
+/*正确*/
+body {
+    font-family: Arial, sans-serif;
+}
+
+h1 {
+    font-family: Arial, "Microsoft YaHei", sans-serif;
+}
+```
+
+### 字体
+
+需要在 Windows 平台显示的中文内容，其字号应不小于 12px。由于 Windows 的字体渲染机制，小于 12px 的文字显示效果极差、难以辨认。
+
+## 变换与动画
+
+使用 `transition` 时应具体指定 `transition-property`不要使用`all`。
+
+``` css
+/* good */
+.box {
+	transition: color 1s, border-color 1s;
+}
+
+/* bad */
+.box {
+    transition: all 1s;
+}
+```
+
+尽可能在浏览器能高效实现的属性上添加过渡和动画。
+
+例如：可以使用`translate`来代替`left`作为动画属性。
+
+``` css
+/* good */
+.box {
+    transition: transform 1s;
+}
+.box:hover {
+    transform: translate(20px); 
+}
+
+/* bad */
+.box {
+    left: 0;
+    transition: left 1s;
+}
+.box:hover {
+    left: 20px; 
+}
+```
+
+
 
 ## 声明顺序
 
@@ -120,7 +260,7 @@ div.content > header.content-header > h2.title {  font-size: 2em;}
 
 不要使用`@import`!!不要使用`@import`!!不要使用`@import`
 
-## 媒体查询（Media query）的位置
+## 媒体查询（Media query）
 
 将媒体查询放在尽可能相关规则的附近。不要将他们打包放在一个单一样式文件中或者放在文档底部。如果你把他们分开了，将来只会被大家遗忘。下面给出一个典型的实例。
 
@@ -171,7 +311,7 @@ div.content > header.content-header > h2.title {  font-size: 2em;}
 
 ## 缩写属性
 
-CSS提供了各种缩写属性（如 font 字体）应该尽可能使用，即使在只设置一个值的情况下。
+CSS提供了各种缩写属性（如 font 字体）应该尽可能使用，但是例如`border`,`margin`,`padding`缩写会同时设置多个值，容易覆盖不需要覆盖的字。当仅仅需要设置一个值，推荐**不**缩写。
 
 ```css
 //不推荐
@@ -183,10 +323,13 @@ padding-bottom: 2em;
 padding-left: 1em;
 padding-right: 1em;
 padding-top: 0;
+margin-top: 0;
 //推荐
 border-top: 0;
 font: 100%/1.6 palatino, georgia, serif;
 padding: 0 1em 2em;
+//例外
+margin-top: 0;
 ```
 
 ## 嵌套
@@ -211,14 +354,30 @@ padding: 0 1em 2em;
 }
 ```
 
-## class命名
+### 普通注释
 
-- class 名称中只能出现小写字符和破折号（dashe）（不是下划线，也不是驼峰命名法）。破折号应当用于相关 class 的命名（类似于命名空间）（例如，`.btn` 和 `.btn-danger`）。
+``` css
+/* 普通注释 */
+```
+
+### 区块注释
+
+``` css
+/**
+ * 模块：m-detail
+ * author: xxx
+ * edit:   2016.5.02
+ */
+```
+
+
+
+## CSS命名规范
+
+- CSS命名中只能出现小写字符和破折号（不是下划线，也不是驼峰命名法）。破折号应当用于相关 class 的命名（类似于命名空间）（例如，`.btn` 和 `.btn-danger`）。
 - 避免过度任意的简写。`.btn` 代表 *button*，但是 `.s` 不能表达任何意思。
-- class 名称应当尽可能短，并且意义明确。
-- 使用有意义的名称。使用有组织的或目的明确的名称，不要使用表现形式（presentational）的名称。
+- CSS命名应当尽可能短，并且意义明确。
 - 基于最近的父 class 或基本（base） class 作为新 class 的前缀。
-- 使用 `.js-*` class 来标识行为（与样式相对），并且不要将这些 class 包含到 CSS 文件中。
 
 ```css
 /* Bad example */
@@ -230,6 +389,54 @@ padding: 0 1em 2em;
 .tweet { ... }
 .important { ... }
 .tweet-header { ... }
+```
+
+**命名前缀**
+
+| 前缀   | 说明                    | 示例          |
+| ---- | --------------------- | ----------- |
+| g-   | 全局通用样式命名              | g-mod       |
+| m-   | 模块命名方式                | m-detail    |
+| ui-  | 组件命名方式                | ui-selector |
+| j-   | 所有用于纯交互的命名，不涉及任何样式规则。 | j-switch    |
+
+不允许出现以类似：`.info`， `.current`， `.news` 开头的选择器，比如：`.info{} `，推荐这样：`.m-xxx .info{}`
+
+**命名单词**
+
+- 不以表现来命名，而是根据内容来命名。比如：left, right, center, red, black这种以表现来定命名，不允许出现；
+- 推荐使用功能和内容相关词汇的命名，如:
+
+```
+套系:package
+相册:photo-album
+作品:works
+攻略:raiders
+普通用户:normal-user 
+达人:talent-user
+摄影师:photographer
+用户昵称:user-alias
+头像:head
+地区:area
+关注数:follow
+粉丝数:followers
+互相注意:attention
+标签:label
+发表时间:publish-date,publish-time
+标题:title
+信息:info
+内容:content
+关于我:about
+简介内容:intro-content
+评论:review 
+服务:service
+封面:cover
+流行:popular
+收藏:collect
+查看:view
+预约:reservation
+促销:sale-promotion
+待补充
 ```
 
 ## 选择器
@@ -280,4 +487,81 @@ span { ... }
 
 ------
 
-## 
+## 推荐BEM
+
+来源：[http://www.w3cplus.com/css/mindbemding-getting-your-head-round-bem-syntax.html](http://www.w3cplus.com/css/mindbemding-getting-your-head-round-bem-syntax.html)
+
+块（block）、元素（element）、修饰符（modifier）。
+
+命名约定的模式如下：
+
+``` css
+.block{}
+.block__element{}
+.block--modifier{}	
+```
+
+- `.block` 代表了更高级别的抽象或组件。
+- `.block__element` 代表`.block`的后代，用于形成一个完整的`.block`的整体。
+- `.block—modifier`代表`.block`的不同状态或不同版本。
+
+BEM的关键是光凭名字就可以告诉其他开发者某个标记是用来干什么的。通过浏览HTML代码中的class属性，你就能够明白模块之间是如何关联的著作权归作者所有。
+
+``` css
+/*BEM*/
+.person{}
+.person__hand{}
+.person--female{}
+.person--female__hand{}
+.person__hand--left{}	
+
+/*常规*/
+.person{}
+.hand{}
+.female{}
+.female-hand{}
+.left-hand{}
+```
+
+常规CSS关系脱节。
+
+举个html的例子
+
+``` html
+<!-- 常规 -->
+<form class="site-search  full">
+  <input type="text" class="field">
+  <input type="Submit" value ="Search" class="button">
+</form>	
+<!-- BEM -->
+<form class="site-search  site-search--full">
+  <input type="text" class="site-search__field">
+  <input type="Submit" value ="Search" class="site-search__button">
+</form>
+```
+
+**什么时候使用BEM**
+
+使用BEM的诀窍是，你要知道什么时候哪些东西是应该写成BEM格式的。因为某些东西确实是位于一个块的内部，但这并不意味它就是BEM中所说的元素。例如
+
+``` html
+<div class="content">
+  <h1 class="content__headline">Lorem ipsum dolor...</h1>
+</div>
+```
+
+在这个例子里，我们也许仅仅只需要另一个class，可以叫它.headline；它的样式取决于它是如何被层叠的，因为它在.content的内部；或者它只是恰巧在.content的内部。如果它是后者（即恰巧在.content的内部，而不总是在）我们就不需要使用BEM。
+
+一切都有可能潜在地用到BEM。
+
+BEM最难的部分之一是明确作用域是从哪开始和到哪结束的，以及什么时候使用（不使用）它。随着接触的多了，有了经验积累，你慢慢就会知道怎么用，这些问题也不再是问题。
+
+## 版本更新
+
+### version1.0 beta(2017-4-15)(高尚)
+
+- 初始化文档，添加主要的内容
+
+## 本页面维护者
+
+- 高尚
